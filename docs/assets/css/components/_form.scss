@@ -2,15 +2,24 @@ form {
     padding-top: 5vh;
     height: auto;
     display: flex;
-    flex-direction: row;
     justify-content: center;
     left: 2vw;
     top: 10%;
 
+    @include phone {flex-direction: column-reverse; align-items: center}
+    @include tablet {flex-direction: column-reverse; align-items: center}
+    @include laptop {flex-direction: row; }
+    @include desktop {flex-direction: row; }
+
     div {
         position: relative;
-        width: 27%;
+        
         text-align: center;
+
+        @include phone {width: 90%;}
+        @include tablet {width: 90%;}
+        @include laptop {width: 32%;}
+        @include desktop {width: 27%;}
     }
 
     label, .checkbox {
@@ -25,6 +34,13 @@ form {
     .checkbox {
         width: 20px;
         height: 20px;
+    }
+
+    h1 {
+        @include phone {font-size: 1.4em;}
+        @include tablet {font-size: 1.7em;}
+        @include laptop {font-size: 1.8em;}
+        @include desktop {font-size: 2em;}
     }
 
 }
