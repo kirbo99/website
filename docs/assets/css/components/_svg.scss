@@ -7,4 +7,12 @@
     z-index: 100;
     margin-top: 8vh;
     
+    svg {
+        @include phone {width: 75vw;}
+        @include tablet {width: 65vw;}
+        @include laptop {width: 70vw;}
+        @include desktop {width: 50vw;}
+        height: auto;
+    }
+    
 }
