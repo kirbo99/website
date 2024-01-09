@@ -4,6 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="assets/js/templates.js"></script>
+    <script src="assets/js/capstone.js"></script>
     <link rel="stylesheet" href="assets/css/styles.css">
     <title>Capstone Project</title>
 </head>
@@ -11,7 +12,44 @@
     <nav></nav>
 
     <main>
-        
+        <div id="SVG_Object"></div>
+    
+        <form action="">
+            <div id="textControls">
+                <h1>Toggle Text Controls</h1>
+                
+                <label for="ligthText">Toggle Light Text: </label>
+                <input type="checkbox" class="checkbox" id="LightLables" content="lightText">
+
+                <label for="exitLightText">Toggle Exit Light Text: </label>
+                <input type="checkbox" class="checkbox" id="ExitLabels" content="exitText">
+            </div>
+
+            <div id="firealarmControls">
+
+                <h1>Fire Alarm Test Controls</h1>
+                <input type="button" value="Kitchen" onclick='fireAlarm(["Kitchen"])'>
+                <input type="button" value="Garage" onclick='fireAlarm(["Garage"])'>
+                <input type="button" value="Bedroom" onclick='fireAlarm(["Bedroom"])'><br>
+                <input type="button" value="Kitchen And Bedroom" onclick='fireAlarm(["Kitchen", "Bedroom"])'>
+                <input type="button" value="Kitchen And Garage" onclick='fireAlarm(["Kitchen", "Garage"])'>
+                <input type="button" value="Bedroom And Garage" onclick='fireAlarm(["Bedroom", "Garage"])'><br>
+                <input type="button" value="All Fire Alarms" onclick='fireAlarm(["Kitchen", "Bedroom", "Garage"])'><br>
+
+                <input type="button" value="RESET ALL" onclick='resetAllLights()'><br>
+
+            </div>
+
+            <div id="lightControls">
+
+                <h1>Light Controls</h1>
+                <input type="button" value="Reset All Lights" onclick='resetAllLights()'>
+                <input type="button" value="Reset Main Lights" onclick='resetMainLights()'>
+                <input type="button" value="Reset Exit Lights" onclick='resetExitLights()'><br>
+
+            </div>
+
+        </form>
     </main>
 
     <footer></footer>
