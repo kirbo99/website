@@ -1,0 +1,43 @@
+$breakpoints: (
+    'x-small': 0px,
+    'small': 480px,
+    'medium': 720px,
+    // 'large': 960px,
+    'large': 1200px
+);
+
+
+// PHONES
+@mixin phone {
+    @media (min-width: map-get($breakpoints, 'x-small')) {
+        @content;
+    }
+}
+
+// TABLETS
+@mixin tablet {
+    @media (min-width: map-get($breakpoints, 'small')) {
+        @content;
+    }
+}
+
+// LAPTOPS
+@mixin laptop {
+    @media (min-width: map-get($breakpoints, 'medium')) {
+        @content;
+    }
+}
+
+// DESKTOPS
+@mixin desktop {
+    @media (min-width: map-get($breakpoints, 'large')) {
+        @content;
+    }
+}
+
+// Custom Break Point
+@mixin breakpoint($bp:0){
+    @media (min-width: $bp) {
+        @content;
+    }
+}
