@@ -32,9 +32,8 @@ nav ul li a {
   display: flex;
   justify-content: space-around;
   transform: scale(1.2);
-  padding-top: 7.5vh;
   z-index: 100;
-  margin: 0 auto;
+  margin-top: 8vh;
 }
 
 form {
