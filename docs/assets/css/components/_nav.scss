@@ -4,9 +4,15 @@ nav {
     border-radius: 30px;
     width: 75vw;
     height: 7vh;
+
+    @include phone {width: 90vw; height: 5vh}
+    @include tablet {width: 90vw; height: 6vh}
+    @include laptop {width: 85vw; height: 6vh}
+    @include desktop {width: 75vw; height: 8vh}
+
     ul {
 
-        
+        text-align: center;
         display: flex;
         align-content: center;
         justify-content: space-evenly;
@@ -20,12 +26,18 @@ nav {
             a {
                 text-decoration: none;
                 font-family: $font1;
-                font-size: 2em;
+                
                 font-weight: bolder;
                 // outline-color: $blue;
                 color: white;
                 outline-width: 1;
                 // -webkit-text-stroke: 1px black;
+
+
+                @include phone {font-size: .7em;}
+                @include tablet {font-size: 1.2em;}
+                @include laptop {font-size: 1.5em;}
+                @include desktop {font-size: 2em;}
 
             }
         }
