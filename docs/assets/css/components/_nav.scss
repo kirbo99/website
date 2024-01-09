@@ -1,0 +1,33 @@
+nav {
+    background-color: $red;
+    margin: 0 auto;
+    border-radius: 30px;
+    width: 75vw;
+    height: 7vh;
+    ul {
+
+        
+        display: flex;
+        align-content: center;
+        justify-content: space-evenly;
+        align-items: center;
+        list-style: none;
+
+        li {
+            background-color: $red;
+            margin-top: 1.25vh;
+            padding: 3vh auto;
+            a {
+                text-decoration: none;
+                font-family: $font1;
+                font-size: 2em;
+                font-weight: bolder;
+                // outline-color: $blue;
+                color: white;
+                outline-width: 1;
+                // -webkit-text-stroke: 1px black;
+
+            }
+        }
+    }
+}
