@@ -7,7 +7,7 @@
    viewBox="0 0 215 130"
    version="1.1"
    id="svg5"
-   inkscape:version="1.1.2 (b8e25be833, 2022-02-05)"
+   inkscape:version="1.3 (0e150ed6c4, 2023-07-21)"
    sodipodi:docname="home.svg"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
@@ -26,13 +26,15 @@
      showgrid="false"
      inkscape:zoom="1.0796969"
      inkscape:cx="394.09208"
-     inkscape:cy="293.60092"
+     inkscape:cy="294.06401"
      inkscape:window-width="1920"
      inkscape:window-height="1017"
-     inkscape:window-x="2552"
+     inkscape:window-x="3832"
      inkscape:window-y="-8"
      inkscape:window-maximized="1"
-     inkscape:current-layer="AlarmsLayer" />
+     inkscape:current-layer="FireAlarmsLayer"
+     inkscape:showpageshadow="2"
+     inkscape:deskcolor="#d1d1d1" />
   <defs
      id="defs2" />
   <g
@@ -532,8 +534,8 @@
       <ellipse
          style="fill:#d40000;stroke:#280b0b;stroke-width:0.65;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none"
          id="Alarm_Kitchen"
-         cx="100.74429"
-         cy="67.389542"
+         cx="101.2344"
+         cy="65.184059"
          rx="2.3392649"
          ry="2.2526255"
          class="FireAlarm"
