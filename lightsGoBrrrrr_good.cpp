@@ -51,7 +51,6 @@ void loop() {
 					if (i == 1) { // If the current index is the Top LED path
 
 						if (test[0] && test[2]) { // Check if fire is on the left and right side
-
 							leds[i][p] = CRGB::Green;
 							leds[i][NUM_LEDS - 1] = p%2 == 0 ? CRGB::Blue : CRGB::Black;
 							
@@ -61,16 +60,13 @@ void loop() {
 					}
 
 					if (i == 0 || i == 2) {
-
 						leds[i][p] = CRGB::Green; // Set the current index to green
 						leds[i][NUM_LEDS - 1] = p%2 == 0 ? CRGB::Blue : CRGB::Black;
-
 					}
 
 
 					if (i == 3) {
 						if (test[0] && test[1]  && test[2]) { // If fire on all main paths
-
 							leds[i][p] = CRGB::Green;
 							leds[i][NUM_LEDS - 1] = p%2 == 0 ? CRGB::Blue : CRGB::Black;
 
@@ -79,7 +75,7 @@ void loop() {
 						}
 					} 
 
-				} else { // Fire is on this path, set to red
+				} else { // Fire is on this path
 					leds[i][NUM_LEDS - p] = CRGB::Red; 
 				}
 
