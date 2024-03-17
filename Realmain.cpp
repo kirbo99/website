@@ -23,9 +23,6 @@ CRGB topLeds[4];
 CRGB leds[4][4] = {rightLeds, topLeds, leftLeds, bottomLeds};
 
 
-// Processing Thread
-// Thread myThread;
-
 // Setup a oneWire instance to communicate with a OneWire device
 OneWire oneWire(ONE_WIRE_BUS);
 
@@ -53,37 +50,35 @@ void setup(void) {
 
 }
 
-void loop(void) { 
 
+
+void loop(void) { 
 
 	for (int i = 0; i < NUM_LEDS; i++) {
 		fill_solid(leds[i], NUM_LEDS, CRGB::Yellow);
 	}
-	FastLED.show();
 
-	
+	// Update Lights and Sensors
+	FastLED.show();
 	sensorCheck();
 	
-	
-	
-	
+
+	// While loop to check for fire
 	while (isFire[0] || isFire[1] || isFire[2]) {
 
+		sensorCheck(); // Update Sensors
 
-		sensorCheck();
-
-		for (int p = 0; p <= NUM_LEDS; p++) {
-			
+		for (int p = 0; p <= NUM_LEDS; p++) { // p is used for the light index (0-4)
 		
-			for (int i = 0; i < NUM_LEDS; i++) {
+			for (int i = 0; i < NUM_LEDS; i++) { // i is the pathway number
 
 				for (int b = 0; b < NUM_LEDS; b++) {
-					leds[i][b] = CRGB::Black;
+					leds[i][b] = CRGB::Black; // Turn off lights
 				}
 
-				if (!isFire[i]) { // Check for fire in the current index, bottom index always has no fire
+				if (!isFire[i]) { // If no fire on current pathway
 
-					if (i == 1) { // If the current index is the Top LED path
+					if (i == 1) { // Top pathway
 
 						if (isFire[0] && isFire[2]) { // Check if fire is on the left and right side
 
@@ -95,15 +90,14 @@ void loop(void) {
 						}
 					}
 
-					if (i == 0 || i == 2) {
+					if (i == 0 || i == 2) { // Left and Right pathways
 
-						leds[i][p] = CRGB::Green; // Set the current index to green
+						leds[i][p] = CRGB::Green;
 						leds[i][NUM_LEDS - 1] = p%2 == 0 ? CRGB::Blue : CRGB::Black;
 
 					}
 
-
-					if (i == 3) {
+					if (i == 3) { // Starting path (Bottom pathway)
 						if (isFire[0] && isFire[1]  && isFire[2]) { // If fire on all main paths
 
 							leds[i][p] = CRGB::Green;
@@ -114,21 +108,16 @@ void loop(void) {
 						}
 					} 
 
-				} else { // Fire is on this path, set to red
+				} else { // Fire detected on this path, set to red
 					leds[i][NUM_LEDS - p] = CRGB::Red; 
 				}
 
-				FastLED.show();
+				FastLED.show(); // Update LEDs
 			}
 
-			delay(500);
-
+			delay(500); // Light speed
 		}
-
-	
 	}
-
-
 }
 
 
@@ -153,21 +142,15 @@ void sensorCheck() {
 
 	sensors.requestTemperatures();
 
-	// float cTemp[3] = {sensors.getTempC(sensor1), sensors.getTempC(sensor2), sensors.getTempC(sensor3)};
 	float fTemp[3] = {sensors.getTempF(sensor1), sensors.getTempF(sensor2), sensors.getTempF(sensor3)};
 
-	for (int i = 0; i < 3; i++) {
-		
-		if (fTemp[i] >= (avgTemp + 10)) { // IsFire
-			isFire[i] = true;
-		} else {
-			isFire[i] = false;
-		}
+	for (int i = 0; i < 3; i++) { // Check for fire for each sensor
+		isFire[1] = fTemp[i] >= (avgTemp + 10) ? true : false;
 	}
 
-	
-
 }
+
+
 
 void debugger() {
 
@@ -203,8 +186,4 @@ void debugger() {
 	Serial.println();
 	Serial.println();
 
-
-
-	
-	
 }
