@@ -145,7 +145,7 @@ void sensorCheck() {
 	float fTemp[3] = {sensors.getTempF(sensor1), sensors.getTempF(sensor2), sensors.getTempF(sensor3)};
 
 	for (int i = 0; i < 3; i++) { // Check for fire for each sensor
-		isFire[1] = fTemp[i] >= (avgTemp + 10) ? true : false;
+		isFire[i] = fTemp[i] >= (avgTemp + 10) ? true : false;
 	}
 
 }
