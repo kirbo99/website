@@ -2,7 +2,7 @@
 #include <DallasTemperature.h>
 #include <FastLED.h>
 
-// Data wire is connected to digital port 4
+// Data wire is connected to digital port 3
 #define ONE_WIRE_BUS 3
 
 // LED Data Pins
@@ -83,7 +83,7 @@ void loop(void) {
 						if (isFire[0] && isFire[2]) { // Check if fire is on the left and right side
 
 							leds[i][p] = CRGB::Green;
-							leds[i][NUM_LEDS - 1] = p%2 == 0 ? CRGB::Blue : CRGB::Black;
+							leds[i][NUM_LEDS - 1] = p % 2 == 0 ? CRGB::Blue : CRGB::Black;
 							
 						} else if (isFire[0] || isFire[2]) { // Check if fire is on the left or right side
 							leds[i][NUM_LEDS - p] = CRGB::Orange;
@@ -93,7 +93,7 @@ void loop(void) {
 					if (i == 0 || i == 2) { // Left and Right pathways
 
 						leds[i][p] = CRGB::Green;
-						leds[i][NUM_LEDS - 1] = p%2 == 0 ? CRGB::Blue : CRGB::Black;
+						leds[i][NUM_LEDS - 1] = p % 2 == 0 ? CRGB::Blue : CRGB::Black;
 
 					}
 
@@ -101,7 +101,7 @@ void loop(void) {
 						if (isFire[0] && isFire[1]  && isFire[2]) { // If fire on all main paths
 
 							leds[i][p] = CRGB::Green;
-							leds[i][NUM_LEDS - 1] = p%2 == 0 ? CRGB::Blue : CRGB::Black;
+							leds[i][NUM_LEDS - 1] = p % 2 == 0 ? CRGB::Blue : CRGB::Black;
 
 						} else {
 							leds[i][NUM_LEDS - p] = CRGB::Green;
@@ -145,7 +145,7 @@ void sensorCheck() {
 	float fTemp[3] = {sensors.getTempF(sensor1), sensors.getTempF(sensor2), sensors.getTempF(sensor3)};
 
 	for (int i = 0; i < 3; i++) { // Check for fire for each sensor
-		isFire[i] = fTemp[i] >= (avgTemp + 10) ? true : false;
+		isFire[i] = fTemp[i] >= (avgTemp + 15) ? true : false;
 	}
 
 }
@@ -162,8 +162,8 @@ void debugger() {
 	Serial.print(avgTemp);
 	Serial.println("");
 
+	Serial.print("Temps: ");
 	for (int i = 0; i < 3; i++) {
-		Serial.print("Temps: ");
 		Serial.print(fTemp[i]);
 		Serial.print(" ");
 		if (i < 2) {
@@ -172,10 +172,9 @@ void debugger() {
 	}
 	Serial.println("");
 
+
+	Serial.print("Values: ");
 	for (int i = 0; i < sizeof(isFire); i++) { 
-		if (i == 0) {
-			Serial.print("Values: ");
-		}
 		
 		Serial.print(isFire[i]);
 		if (i < sizeof(isFire) - 1) {
